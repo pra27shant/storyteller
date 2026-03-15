@@ -58,7 +58,7 @@ router.post(
 // NOTE: Real implementation requires an STT API key (e.g., Google Cloud Speech, AWS Transcribe, or Whisper)
 router.post(
   '/stt',
-  [body('audio_data').notEmpty().withMessage('Audio data description is required')],
+  [body('audio_data').notEmpty().withMessage('Audio data is required')],
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
