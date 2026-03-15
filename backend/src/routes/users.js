@@ -53,6 +53,8 @@ router.post(
   [
     body('story_id').notEmpty().withMessage('story_id is required'),
     body('progress')
+      .notEmpty()
+      .withMessage('progress is required')
       .isInt({ min: 0, max: 100 })
       .withMessage('progress must be an integer between 0 and 100'),
   ],
