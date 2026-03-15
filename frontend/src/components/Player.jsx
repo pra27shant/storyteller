@@ -53,14 +53,10 @@ export default function Player() {
     utteranceRef.current = utt;
     setPlaying(true);
 
-    utt.onend = () => {
-      setPlaying(false);
-      setProgress(100);
-    };
-
-    // Approximate progress
+    // Approximate progress based on average speaking rate
+    const AVG_WORDS_PER_MIN = 150;
     const words = story.content.split(/\s+/).length;
-    const estimatedDuration = (words / 150) * 60 * 1000 / speed;
+    const estimatedDuration = (words / AVG_WORDS_PER_MIN) * 60 * 1000 / speed;
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
